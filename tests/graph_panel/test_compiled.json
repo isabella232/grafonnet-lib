@@ -5,6 +5,7 @@
       "dashLength": 10,
       "dashes": true,
       "datasource": "$PROMETHEUS",
+      "decimals": 2,
       "description": "description",
       "fill": 2,
       "height": "2011px",
@@ -51,10 +52,11 @@
       "timeShift": null,
       "title": "test",
       "tooltip": {
-         "shared": true,
+         "shared": false,
          "sort": 1,
          "value_type": "cumulative"
       },
+      "transparent": true,
       "type": "graph",
       "xaxis": {
          "buckets": null,
@@ -67,7 +69,7 @@
          {
             "decimals": 2,
             "format": "kbytes",
-            "label": null,
+            "label": "labelY1",
             "logBase": 2,
             "max": 10,
             "min": 10,
@@ -76,7 +78,7 @@
          {
             "decimals": 2,
             "format": "ms",
-            "label": null,
+            "label": "labelY2",
             "logBase": 1,
             "max": 10,
             "min": 10,
@@ -90,8 +92,10 @@
             [ ]
          ],
          "executionErrorState": "alerting",
+         "for": "5m",
          "frequency": "60s",
          "handler": 1,
+         "message": "",
          "name": "name of alert",
          "noDataState": "no_data",
          "notifications": [ ]
@@ -175,8 +179,10 @@
             }
          ],
          "executionErrorState": "alerting",
+         "for": "5m",
          "frequency": "60s",
          "handler": 1,
+         "message": "",
          "name": "name of alert",
          "noDataState": "no_data",
          "notifications": [ ]

@@ -11,6 +11,12 @@ local tablePanel = grafana.tablePanel;
     span=12,
     datasource='$PROMETHEUS',
     description='description',
+    columns=[
+      {
+        text: 'Users',
+        value: 'Users',
+      },
+    ],
     styles=[
       {
         alias: 'Users',
@@ -22,8 +28,27 @@ local tablePanel = grafana.tablePanel;
         unit: 'none',
       },
     ],
+    transform='table',
+    transparent=true,
+    sort={
+      col: 1,
+      desc: true,
+    },
+    time_from='24h',
+    time_shift='1h',
   ),
-  targets: tablePanel.new('with targets', span=12)
-           .addTarget({ a: 'foo' })
-           .addTarget({ b: 'foo' }),
+  targets:
+    [
+      tablePanel.new('with targets', span=12)
+      .addTarget({ a: 'foo' })
+      .addTarget({ b: 'foo' }),
+      tablePanel.new('with batch targets', span=12)
+      .addTargets([{ a: 'foo' }, { b: 'foo' }]),
+    ],
+  hideColumns: tablePanel.new(
+    'test',
+    span=12,
+  ).
+    hideColumn('Time').
+    hideColumn('Space'),
 }
